@@ -1,34 +1,47 @@
 package HW3;
+//georgeduganitzhw
 import java.util.Scanner;
-
 public class Loops {
-
+    // QUESTION 1
     //NOTE: DO NOT change anything in the boiler plate
     //If I added default code it is meant to be there
     //and should not be adjusted unless otherwise noted
     //(return statments are usually changed)
-
     //Make a method that will return true if a given 
     //String contains between 1 and 3 'e' chars.
     //Ex.
     //loopE("eat") -> true
     //eeat -> true
     //eeeat -> true
-    //eeeat -> false
-
+    //eeeeat -> false
     public static boolean loopE(String str){
-        return true; // <- this should be changed 
-    }
-
+        char[] letters = str.toCharArray();
+        int count = 0;
+		for (int i = 0; i < letters.length; i++) {
+			if (letters[i] == 'e') {
+				count++;
+			}
+		}
+		if (count == 1 || count== 2 || count == 3) {
+			return true;
+		}
+		return false; //<- this should be changed
+	}
+    // QUESTION 2
     //Given a String str and int n return a larger string
     //that is n copies of the original string 
     //Ex.
     //stringTimes("Code",2) ->"CodeCode"
     //stringTimes("Code",4) ->"CodeCodeCodeCode"
     public static String stringTimes(String str, int n) {
-        return null; // <- this should be changed 
+        String s = "";
+        for ( int i = 0; i < n; i++ )
+        {
+            s = s + str;
+        }
+        return s; // <- this should be changed 
     } 
-
+    // QUESTION 3
     //Create a method Given a string, return the string where all of the "z"
     //Have been removed. Except do not remove a z at the start
     //or end
@@ -37,9 +50,26 @@ public class Loops {
     //stringT("nozthaznks") -> "nothanks"
     //stringT("xksiazdjaasldzsajzasdz") -> "xksiadjaasldsajasdz"
     public static String stringZ(String str){
-        return null; // <- this should be changed 
+        for (int i = 0 ;i < str.length();){
+            if (str.substring(0,1).equals("z") && str.substring(str.length()-1).equals("z"))
+            {
+                return str = "z"+ str.replace("z", "")+"z";
+            }
+            else if (str.substring(0,1).equals("z"))
+            {
+                return str ="z"+ str.replace("z", "");
+            }
+            else if(str.substring(str.length()-1).equals("z"))
+            {
+                return str =str.replace("z", "") +"z";
+            }
+            else{
+               return str= str.replace("z", "");
+            }
+        }
+        return str;      
     }
-
+    // QUESTION 4
     //Create a method that contains a while loop that allows for
     //The user to input numbers until the number 0 is entered. Each time a number is 
     //entered the total will be summed and then prompted for a second number. 
@@ -66,11 +96,40 @@ public class Loops {
     // Number: 0
     // TOTAL ENDED --- The total is 27.
     public static void sums(){
+        System.out.println("The sum will be....");
+        Scanner enter = new Scanner(System.in);
+        System.out.println("Number:");
+        int data = enter.nextInt();
+        int sum = 0;
+        while (data!=0) {
+            sum += data;
+            System.out.println("The sum is:");
+            System.out.println(sum);
+            System.out.println("Number:");
+            data = enter.nextInt();
+        }
+        System.out.println("TOTAL ENDED --- ");
+        System.out.println("The total is "+ sum);
+    {   
+        enter.close();
     }
-
+}
     public static void main(String[] args) {
         // Add code to help test your methods here
-
+        // Question 1 
+        System.out.println(Loops.loopE("food"));
+		System.out.println(Loops.loopE("ffood"));
+        System.out.println(Loops.loopE("fffood"));
+		System.out.println(Loops.loopE("ffffood"));
+        // Question 2 
+        System.out.println(stringTimes("Code", 2));
+        System.out.println(stringTimes("Code", 4));
+        // Question 3
+        System.out.println(stringZ("zHelloz"));
+        System.out.println(stringZ("no thanks"));
+        System.out.println(stringZ("khihwudhwuhuh"));
+        // Question 4 
+        sums();
     }
-    
+
 }
