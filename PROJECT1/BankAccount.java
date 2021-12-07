@@ -26,6 +26,13 @@ public class BankAccount {
     public void monthlyFee(){
         withdraw(10);
     }
+    public void transfer(double amount,double BankAccount1, double BankAccount2){
+        double Balance1 = BankAccount1 - amount;
+        double Balance2 = BankAccount2 + amount;
+        System.out.println(BankAccount1 balance);
+        System.out.println();
+    }
+
     // P (1 + R/n)^(nt) - P
     // P = principal
     // t = years
